@@ -47,5 +47,10 @@ group by country_id
 order by count(*) desc
 limit 1;
 
+select count(*) as "actor number" from actor
 
+select concat(first_name, ' ', last_name) as "isim-soyisim" from actor
+
+select active,count(active) from customer
+group by active
 
