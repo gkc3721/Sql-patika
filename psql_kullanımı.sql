@@ -34,5 +34,27 @@ WHERE first_name LIKE 'A%' AND last_name LIKE 'A%'
 
 --To turn on query execution time, you use the \timing command.You use the same command \timing to turn it off.
 
+--example
+--postgres veritabanına bağlanıp database oluşturmak:
+postgres=#psql -U postgres
+postgres=# create database testdb;
 
+postgres=# \l
+postgres=# \q
 
+--psql üzerinden localhost olarak, port numarasıyla database'e erişmek
+psql -h localhost -p 5432 -U postgres testdb
+--başka veritabanına bağlanmak için
+\c dvdrental
+
+create table users(
+  id serial primary key,
+  username varchar(50) not null,
+  birthday date)
+
+\d+ ile detaylı bilgi alınıyor database ile ilgili
+\d+ users ile users tablosunun bilgisi geliyor
+
+testdb=# alter table users rename column birthday to bday;
+
+alter table users add constraint unique_username unique(username)
